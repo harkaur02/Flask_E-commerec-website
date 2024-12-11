@@ -13,7 +13,9 @@ db_username = os.environ["MONGODB_USERNAME"]
 db_password = os.environ["MONGODB_PASSWORD"]
 
 # MongoDB Atlas connection
-client = MongoClient(f'mongodb+srv://{db_username}:{db_password}@cluster0.mrzjz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+#original old #client = MongoClient(f'mongodb+srv://{db_username}:{db_password}@cluster0.mrzjz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+#my new connection string
+client = MongoClient(f'mongodb+srv://db_username:db_password@cluster0.2sboz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 db = client['shop_db']
 products_collection = db['products']
 
@@ -74,4 +76,4 @@ def upload_product():
     return render_template('upload_product.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
